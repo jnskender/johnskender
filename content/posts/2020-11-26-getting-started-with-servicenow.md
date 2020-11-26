@@ -3,7 +3,7 @@ template: post
 title: Getting started with ServiceNow
 slug: getting-started-with-servicenow
 socialImage: /media/servicenowstart.png
-draft: true
+draft: false
 date: 2020-11-26T02:37:33.733Z
 description: "My quick tips for getting yourself familiar with ServiceNow as a developer. "
 category: ServiceNow
