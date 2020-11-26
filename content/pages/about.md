@@ -1,7 +1,9 @@
 ---
-title: "About me"
-template: "page"
-socialImage: "/media/image-2.jpg"
+template: page
+title: About me
+slug: about
+socialImage: /media/family.jpg
+draft: true
 ---
 
 Welcome! My name is John Skender. I'm a software engineer specializing in web technologies across the entire stack.I have two years professional experience designing and developing custom applications with a focus on great design, scalability, and analytics that drive results.
