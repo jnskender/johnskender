@@ -6,7 +6,7 @@ module.exports = {
   title: 'John Skender',
   subtitle: 'Web application developer specializing in ServiceNow.',
   copyright: '© All rights reserved.',
-  disqusShortname: 'http://disqus.com/by/johnskender',
+  disqusShortname: 'johnskender',
   postsPerPage: 4,
   googleAnalyticsId: 'G-SVLYV7EXZM',
   useKatex: false,
