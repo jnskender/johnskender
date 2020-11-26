@@ -5,10 +5,11 @@ slug: about
 socialImage: /media/family.jpg
 draft: true
 ---
-
 Welcome! My name is John Skender. I'm a software engineer specializing in web technologies across the entire stack.I have two years professional experience designing and developing custom applications with a focus on great design, scalability, and analytics that drive results.
 
 I'm also a proud husband, father, athlete and musician.
+
+![Family](/media/family.jpg "Family")
 
 Currently my focus is harnessing the power of the ServiceNow platform to create engaging and effective experiences across ITSM, Customer Service and Employee Experience.
 
