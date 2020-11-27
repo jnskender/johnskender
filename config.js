@@ -26,14 +26,14 @@ module.exports = {
   ],
   author: {
     name: 'John Skender',
-    photo: '/me.jpg',
+    photo: '/photo.jpg',
     bio: 'Web application developer specializing in ServiceNow.',
     contacts: {
       email: '',
       facebook: '',
       telegram: '',
       twitter: 'SkenderJohn',
-      github: 'johnnskender',
+      github: 'jnskender',
       rss: '',
       vkontakte: '',
       linkedin: 'jnskender',
