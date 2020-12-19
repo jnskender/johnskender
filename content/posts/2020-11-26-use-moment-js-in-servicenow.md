@@ -24,14 +24,11 @@ This post will be split into three parts
 2. [Server Installation](#server-side)
 3. [Basic Usage](#basic-usage)
 
-
-
-
 UI scripts will make the library available in the client (UI policies, UI actions, Client Scripts, etc) and Script Includes will make it available in Server code (Other Script Includes, Business Rules, Fix Scripts, etc).
 
 ## Client Side
 
-Navigate to [https://momentjs.com/downloads/moment.min.js]() and copy the entirety of the minified library.
+Navigate to <https://momentjs.com/downloads/moment.min.js> and copy the entirety of the minified library.
 
 Create a new [UI Script](https://docs.servicenow.com/bundle/orlando-application-development/page/script/client-scripts/concept/c_UIScripts.html) in your instance and paste the contents of the script into the script field. You'll need to set the following properties on the script
 
@@ -40,14 +37,14 @@ Create a new [UI Script](https://docs.servicenow.com/bundle/orlando-application-
 * Active = true
 * Name = moment
 
-![](./uiscript.png)
+![](/media/uiscript.png)
 
-You should now have access to the ```moment``` object anywhere client side throughout the platform.
+You should now have access to the `moment` object anywhere client side throughout the platform.
 
 To test this, open the javascript executor
 
-* For Mac press ```Ctrl+Shift+j```
-* For Windows press ```Alt+Ctrl+Shift+j```
+* For Mac press `Ctrl+Shift+j`
+* For Windows press `Alt+Ctrl+Shift+j`
 
 In the executor window type
 
@@ -61,14 +58,13 @@ then click "Run my code"
 
 If everything was installed successfully you should see the below output in your browser's console.
 
-```Todays date: 2020-08-29T12:36:02-05:00```
-
+`Todays date: 2020-08-29T12:36:02-05:00`
 
 ## Server Side
 
-Navigate to [https://raw.githubusercontent.com/jnskender/Moment-ServiceNow/master/moment.min.js]() and copy the entirety of the minified library.
+Navigate to [https://raw.githubusercontent.com/jnskender/Moment-ServiceNow/master/moment.min.js](<>) and copy the entirety of the minified library.
 
-Create a new [Script Include](https://docs.servicenow.com/bundle/paris-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html)   (sys\_script\_include) and name it "Moment".
+Create a new [Script Include](https://docs.servicenow.com/bundle/paris-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html)   (sys_script_include) and name it "Moment".
 
 Delete all auto generated code from the new script include.
 
@@ -86,9 +82,10 @@ gs.print(moment().format()); //prints todays date in standard format
 
 You should see similar output to below if the script include was successfully configured.
 
-```2020-08-29T10:57:07-07:00```
+`2020-08-29T10:57:07-07:00`
 
 ## Basic Usage
+
 To show you how you can get started using moment in relation to ServiceNow, we'll go through a brief example of creating a moment instance from a GlideDateTime field, modify the instance using some common moment functions, and update that field with the modified time.
 
 To get started open a [background script](https://developer.servicenow.com/blog.do?p=/post/training-scriptsbg/) window or an [xplore window](https://developer.servicenow.com/connect.do#!/share/contents/9650888_xplore_developer_toolkit?t=PRODUCT_DETAILS).
@@ -104,13 +101,14 @@ if (changeGR.next()) {
   gs.print(changeGR.getValue("number"));
 }
 ```
+
 In this case we're just printing out the number to make sure we have a record that meets that condition. If you don't, please create a change and fill out that field to meet the above conditions.
 
 For my change record, the initial start date looks like
 
 ![](./initial-start-date.png)
 
-Inside of your ```if``` statement we'll then need to create a moment instance by passing in the raw value of start date. Because ServiceNow stores date times as UTC internally, we will need to specify to moment that we are parsing a UTC value.
+Inside of your `if` statement we'll then need to create a moment instance by passing in the raw value of start date. Because ServiceNow stores date times as UTC internally, we will need to specify to moment that we are parsing a UTC value.
 
 ```javascript
 var startDate = moment.utc(changeGR.getDisplayValue());
@@ -118,9 +116,9 @@ var startDate = moment.utc(changeGR.getDisplayValue());
 
 The moment library is smart enough to understand the format of GlideDateTimes display value so we don't need to explicitly set it.
 
-Printing the value ```startDate.format()``` should return the moment formatted string:
+Printing the value `startDate.format()` should return the moment formatted string:
 
-```2020-10-20T07:30:00-07:00```
+`2020-10-20T07:30:00-07:00`
 
 Now that we have a moment instance we can easily adjust the time to our liking using moments built in manipulation methods such as add and subtract.
 
@@ -130,14 +128,16 @@ Lets add 1 day and subtract 2 hours.
 startDate.add("1", "d").subtract("2", "h");
 gs.print(startDate.format())//2020-10-21T05:30:00-07:007
 ```
-Now if we want to actually save that new value to the change record we need to format the value so that ServiceNow can recognize it. ServiceNow stores raw date values as UTC in the following format ```"YYYY-MM-DD HH:mm:ss"```
 
-We can use moments ```format()``` method with this format to ensure we are passing the correctly formatted value. Updating the change record would look like:
+Now if we want to actually save that new value to the change record we need to format the value so that ServiceNow can recognize it. ServiceNow stores raw date values as UTC in the following format `"YYYY-MM-DD HH:mm:ss"`
+
+We can use moments `format()` method with this format to ensure we are passing the correctly formatted value. Updating the change record would look like:
 
 ```javascript
 changeGR.setValue("start_date", startDate.format("YYYY-MM-DD HH:mm:ss"));
 changeGR.update();
 ```
+
 If we run this script in the background we should see the UI show that Planned start has had 1 day added and 2 hours subtracted.
 
 ![](./new-start-value.png)
@@ -158,15 +158,10 @@ if (changeGR.next()) {
   changeGR.update();
 }
 ```
+
 ## Helpful Links
 
 * [Moment.js docs](https://momentjs.com/)
 * [GlideDateTime API docs](https://developer.servicenow.com/dev.do#!/reference/api/orlando/server_legacy/c_GlideDateTimeAPI?navFilter=glidedatetime)
 * [UI Scripts](https://docs.servicenow.com/bundle/orlando-application-development/page/script/client-scripts/concept/c_UIScripts.html)
 * [Script Includes](https://docs.servicenow.com/bundle/paris-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html)
-
-
-
-
-
-
