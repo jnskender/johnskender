@@ -37,7 +37,7 @@ Create a new [UI Script](https://docs.servicenow.com/bundle/orlando-application-
 * Active = true
 * Name = moment
 
-![](/media/uiscript.png)
+![](/media/ui-script.png)
 
 You should now have access to the `moment` object anywhere client side throughout the platform.
 
@@ -54,7 +54,7 @@ console.log("Todays date: " + moment().format())
 
 then click "Run my code"
 
-![](./executor.png)
+![](./media/executor.png)
 
 If everything was installed successfully you should see the below output in your browser's console.
 
@@ -70,7 +70,7 @@ Delete all auto generated code from the new script include.
 
 Paste the contents of the minified library to the script include.
 
-![](./script-include.png)
+![](./media/script-include.png)
 
 To test that we've correctly made this available on the server open a [background script](https://developer.servicenow.com/blog.do?p=/post/training-scriptsbg/) window or an [xplore window](https://developer.servicenow.com/connect.do#!/share/contents/9650888_xplore_developer_toolkit?t=PRODUCT_DETAILS).
 
@@ -106,7 +106,7 @@ In this case we're just printing out the number to make sure we have a record th
 
 For my change record, the initial start date looks like
 
-![](./initial-start-date.png)
+![](./media/initial-start-date.png)
 
 Inside of your `if` statement we'll then need to create a moment instance by passing in the raw value of start date. Because ServiceNow stores date times as UTC internally, we will need to specify to moment that we are parsing a UTC value.
 
@@ -140,7 +140,7 @@ changeGR.update();
 
 If we run this script in the background we should see the UI show that Planned start has had 1 day added and 2 hours subtracted.
 
-![](./new-start-value.png)
+![](./media/new-start-value.png)
 
 The entire script should look something like
 
