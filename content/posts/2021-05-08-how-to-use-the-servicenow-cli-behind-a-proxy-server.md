@@ -10,12 +10,17 @@ description: "ServiceNow's latest product, the ServiceNow CLI, ventures to allow
   article aims how you can utilize this new tool in the high chance that your
   company tunnels all of their traffic through a proxy server. "
 category: ServiceNow
+tags:
+  - ServiceNow
+  - CLI
+  - UI-Builder
+  - Now-Experience
 ---
-The ability to utilize modern tooling introduced by ServiceNow (UI Builder, Now Experience) relies on the ability to access another foundational tool, the ServiceNow CLI. 
+The ability to utilize modern tooling introduced by ServiceNow (UI Builder, Now Experience) relies on the ability to access another foundational tool, the ServiceNow CLI. This article details how to utilize the CLI if your connection relies on a proxy server. 
 
 ## The Problem
 
-I won't dive into detail on what the CLI is in this article. This article's main purpose is to fill a gap that the ServiceNow product team has introduced with the CLI. In it's current state as of writing this article (05-08-2021) the CLI does not allow you to connect to an instance if your web traffic is routed through a proxy server. This is both suprising and very frustrating as many ServiceNow customer's are in the corporate environment where this is basically standard practice. 
+I won't dive into detail on what the CLI is in this article. This article's main purpose is to fill a gap that the ServiceNow product team has introduced with the CLI. In it's current state as of writing this article (05-08-2021) the CLI does not allow you to connect to an instance if your web traffic is routed through a proxy server. This is both surprising and very frustrating as many ServiceNow customer's are in the corporate environment where this is basically standard practice. 
 
 Most modern tooling will utilize your local env variables of `http_proxy` and `https_proxy` to ensure that the traffic is routed through your desired proxy. The CLI will not honor these env variables when making connections to the instance. I have spoken with ServiceNow support and they have acknowledge they are aware of this limitation and also have no current plans to alleviate this issue for their customers. 
 
@@ -77,7 +82,9 @@ You then just need to save that file.
 
 ### Step 5 : Set your proxy
 
-The npm package above, [global-agent](https://github.com/gajus/global-agent), is a relatively simple package that overrides the agent option on requests that utilize http.request internally. ServiceNow is using a library, [got](https://github.com/sindresorhus/got), to make their http requests to the instance. This library is utilizing http.request under the hood which is why global-agent bootstrap works!
+The npm package above, [global-agent](https://github.com/gajus/global-agent), is a relatively simple package that overrides the agent option on requests that utilize http.request internally. You won't even need to install it because ServiceNow is already using this package elsewhere in the source. 
+
+ServiceNow is using a library, [got](https://github.com/sindresorhus/got), to make their http requests to the instance. This library is utilizing http.request under the hood which is why global-agent bootstrap works!
 
 global-agent relies on an environment variable in your terminal to know which proxy server to use. You'll need to add this to your bash/zsh profile to have it persist or just type this command every session. 
 
@@ -90,10 +97,10 @@ After doing the above, the global-agent package should now be ensuring all http 
 
 ```snc configure profile set```
 
-again it should be able to complete!
+again and it should be able to complete!
 
 
 ## Longterm
 
-Obviously this is not a great developer experience and is hardly a long term solution. As I mentioned I have made the product team aware of this limitation but I hope that anyone who finds this useful will upvote my feature request over on the ServiceNow idea portal. 
+Obviously this is not a great developer experience and is hardly a long term solution. As I mentioned I have made the product team aware of this limitation but I hope that anyone who finds this useful will [upvote my feature request over on the ServiceNow idea portal](https://community.servicenow.com/community?id=view_idea&sysparm_idea_id=faa4c3b81b0430d0a17c62c4bd4bcbc5&sysparm_idea_table=x_snc_com_ideation_idea&sysparm_module_id=enhancement_requests). 
 
