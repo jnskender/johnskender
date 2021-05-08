@@ -38,9 +38,24 @@ If this step times out with error
 
 ```connect ETIMEDOUT INSTANCEIPADDRESS:443```
 
-This is most likely because your traffic needs to be routed through your proxy to be allowed to find it's way to your instance. 
+This is most likely because your traffic needs to be routed through your proxy to be allowed to find it's way to your instance.
 
-### Step 3 : Find
+### Step  3: Get to the Source
+
+You'll need to have the ui-component extension installed to get access to the source. You can install the extension with
+
+```snc extension add --name ui-component```
+
+From here we'll need to open the source code that was stored on your root user folder as a result of the above command. The path on mac looks like 
+
+```/Users/username/.snc```
+
+.snc is a configuration folder known as a "[dotfile](https://wiki.archlinux.org/title/Dotfiles)". Because of this your finder/explorer will not show it by default. To show dotfiles in Mac's Finder window you can use the shorcut ```command shift .```
+
+Even easier, if you have visual studio code installed, is to run the following command to open the folder in VS code: ```code ~/Users/username/.snc```. This will open the folder at that path in VS code. 
+
+
+
 
 
 
